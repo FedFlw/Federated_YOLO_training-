@@ -1,1 +1,43 @@
+# Federated Learning Experiment Logs
+
+This repository contains training and testing logs for multiple federated learning experiments conducted using different numbers of nodes and data distributions. Each folder represents a distinct experimental setup based on the number and type of participating nodes.
+
+## Folder Structure
+
+Each top-level folder follows the naming format:
+
+<NODES><DISTRIBUTION>seed/
+
+
+Where:
+- `<NODES>`: Number of federated nodes (e.g., 2, 4, 8, 16).
+- `<DISTRIBUTION>`:
+  - `h` = Heterogeneous data distribution (Non-IID).
+  - `r` = Random data distribution.
+  - The 2-node setup (`2seed/`) has only one default distribution type.
+
+### Example Folders:
+- `2seed/`: 2 nodes with a default data distribution.
+- `4hseed/`: 4 nodes, heterogeneous data.
+- `8rseed/`: 8 nodes, random data.
+- `16hseed/`: 16 nodes, heterogeneous data.
+
+## Contents of Each Folder
+
+Each folder contains:
+- **5 Training Logs**: One for each run using seeds 0 to 4.
+  - Files are named like:  
+    - `training<NODES><TYPE>seed<SEED>.log`
+    - Example: `training4hseed0.log`  
+- **15 Testing Logs**: 3 per repetition (total of 5 repetitions × 3 tests):
+  - For each repetition, there are testing results on:
+    - `TACO` dataset
+    - `PlastoOPol` dataset
+    - Combined/Full testing set (`all`)
+  - Files are named in the format:
+    - `testing<model-ID><TYPE>.log`
+    - Example: `testing1321TACO.log`, `testing1321Plast.log`, `testing1321all.log`
+
+- **run_tests.sh**: A script used to run the evaluation for the best-performing model for each repetition.
+
 
